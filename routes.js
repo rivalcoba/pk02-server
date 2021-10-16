@@ -28,7 +28,7 @@ const requestHandler = (req, res) => {
     res.setHeader("Content-Type", "text/html");
     res.write("<html>");
     res.write(
-      '<body> <quote>"The only way to learn a new programming language is by writing programs in it."</quote> <strong>- Dennis Ritchie</strong></body>'
+      '<body> <quote>"The only way to learn a new programming language is by writing programs in it."</quote> <strong>- Dennis Ritchie </strong></body>'
     );
     res.write("</html>");
     // Cerrando la comunicación
