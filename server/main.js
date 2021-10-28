@@ -12,9 +12,15 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 
 // Se agrega ruta admin
-app.use(adminRoute);
+app.use('/admin', adminRoute);
+
 // Se agrega ruta home
 app.use(homeRoute);
+
+// 404 error apge
+app.use((req, res, next) => {
+  res.status(404).send('<h1>👀 Page not found</h1>')
+});
 
 
 // Poniendo el servidor a escuchar

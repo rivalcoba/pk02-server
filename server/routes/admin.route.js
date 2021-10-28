@@ -6,9 +6,10 @@ import { Router } from 'express';
 const router = Router();
 
 // 3 Registramos rutas al enrutador
-router.get('/add-product-form', (req, res, next) => {
+// GET "/add-product"
+router.get('/add-product', (req, res, next) => {
   res.send(`
-  <form action="/add-product" method="POST">
+  <form action="add-product" method="POST">
     <label for="prduct-name">☕ Product Name</label>
     <input type="text" name="name" id="prduct-name">
     <button type="submit">Agregar producto</button>
@@ -16,7 +17,8 @@ router.get('/add-product-form', (req, res, next) => {
   `);
 });
 
-router.post('/add-product', (req, res) =>{
+// POST "/add-product"
+router.post('/add-product', (req, res) => {
   // Realizamos la extrancción de la información
   // del cuerpo de la petición
   return res.json(req.body);
