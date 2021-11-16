@@ -1,5 +1,7 @@
 // Se importa el modulo
 import express from 'express';
+import path from 'path';
+
 
 // Importando enrutadores
 import adminRoute from './routes/admin.route.js';
@@ -19,7 +21,9 @@ app.use(homeRoute);
 
 // 404 error apge
 app.use((req, res, next) => {
-  res.status(404).send('<h1>👀 Page not found</h1>')
+  let resourcePath = path.join(path.resolve(), 'server', 'views', 'not-found.html');
+  console.log(`📝 Sirviendo recurso: ${path.resolve()}`);
+  res.sendFile(resourcePath,err=>console.log("📝 Recurso'not-found.html' servido con exito 😊"));
 });
 
 

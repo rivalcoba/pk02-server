@@ -1,4 +1,5 @@
-import { Router } from "express";
+import { Router } from 'express';
+import path from 'path';
 
 const router = Router();
 
@@ -9,6 +10,9 @@ router.get('/about', (req, res, next) => {
 
 // Filtrando la ruta raíz
 router.get('/', (req, res, next) => {
-  res.send('<h1>👨‍💻 Mi App </h1>\n Hola extraño 😁');
+  let resourcePath = path.join(path.resolve(), 'server', 'views', 'shop.html');
+  console.log(`📝 Sirviendo recurso: ${resourcePath}`);
+  res.sendFile(resourcePath,err=>console.log("📝 Recurso 'shop.html' servido con exito 😊"));
 });
+
 export default router;
