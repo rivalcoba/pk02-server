@@ -3,6 +3,7 @@
 import { Router } from 'express';
 // Importando el paquete Path
 import path from 'path';
+import { ROOT_DIR } from '../helpers/path.helper.js';
 
 // 2 Creamos una instancia de un erutador
 const router = Router();
@@ -11,8 +12,8 @@ const router = Router();
 // GET "/admin/add-product"
 router.get('/add-product', (req, res, next) => {
   // Obteniendo la ruta del recurso
-  let resourcePath = path.join(path.resolve(), 'server', 'views', 'add-product.html');
-  console.log(`📝 Sirviendo recurso: ${path.resolve()}`);
+  let resourcePath = path.join(ROOT_DIR, 'server', 'views', 'add-product.html');
+  console.log(`📝 Sirviendo recurso: ${resourcePath}`);
   res.sendFile(resourcePath,err=>console.log("📝 Recurso 'add-product.html' servido con exito 😊"));
 });
 

@@ -1,6 +1,7 @@
 // Se importa el modulo
 import express from 'express';
 import path from 'path';
+import { ROOT_DIR } from './helpers/path.helper.js';
 
 
 // Importando enrutadores
@@ -21,9 +22,9 @@ app.use(homeRoute);
 
 // 404 error apge
 app.use((req, res, next) => {
-  let resourcePath = path.join(path.resolve(), 'server', 'views', 'not-found.html');
+  let resourcePath = path.join(ROOT_DIR, 'server', 'views', 'not-found.html');
   console.log(`📝 Sirviendo recurso: ${path.resolve()}`);
-  res.sendFile(resourcePath,err=>console.log("📝 Recurso'not-found.html' servido con exito 😊"));
+  res.status(404).sendFile(resourcePath,err=>console.log("📝 Recurso'not-found.html' servido con exito 😊"));
 });
 
 

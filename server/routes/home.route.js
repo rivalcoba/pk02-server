@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import path from 'path';
+import { ROOT_DIR } from '../helpers/path.helper.js';
 
 const router = Router();
 
@@ -9,10 +10,13 @@ router.get('/about', (req, res, next) => {
 });
 
 // Filtrando la ruta raíz
+// "GET /""
 router.get('/', (req, res, next) => {
-  let resourcePath = path.join(path.resolve(), 'server', 'views', 'shop.html');
+  let resourcePath = path.join(ROOT_DIR, 'server', 'views', 'shop.html');
   console.log(`📝 Sirviendo recurso: ${resourcePath}`);
-  res.sendFile(resourcePath,err=>console.log("📝 Recurso 'shop.html' servido con exito 😊"));
+  res.sendFile(resourcePath, (err) =>
+    console.log("📝 Recurso 'shop.html' servido con exito 😊")
+  );
 });
 
 export default router;
