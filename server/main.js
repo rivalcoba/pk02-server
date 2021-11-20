@@ -14,6 +14,9 @@ const app = express();
 // Se registra el middleware del BodyParser
 app.use(express.urlencoded({ extended: false }));
 
+// Se registra el mw para el servidor de archivos estaticos
+app.use(express.static(path.join(ROOT_DIR, 'public')));
+
 // Se agrega ruta admin
 app.use('/admin', adminRoute);
 
