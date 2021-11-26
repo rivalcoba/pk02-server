@@ -3,10 +3,10 @@ import express from 'express';
 import path from 'path';
 import { ROOT_DIR } from './helpers/path.helper.js';
 
-
 // Importando enrutadores
-import adminRoute from './routes/admin.route.js';
-import homeRoute from './routes/home.route.js'
+import { router as adminRoute } from './routes/admin.route.js';
+import homeRoute from './routes/home.route.js';
+import shopRoute from './routes/shop.route.js';
 
 // Creando una instancia de express
 const app = express();
@@ -19,6 +19,8 @@ app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // Se agrega ruta admin
 app.use('/admin', adminRoute);
+// Se agrega ruta shop
+app.use('/shop', shopRoute);
 
 // Se agrega ruta home
 app.use(homeRoute);
@@ -27,9 +29,12 @@ app.use(homeRoute);
 app.use((req, res, next) => {
   let resourcePath = path.join(ROOT_DIR, 'server', 'views', 'not-found.html');
   console.log(`📝 Sirviendo recurso: ${path.resolve()}`);
-  res.status(404).sendFile(resourcePath,err=>console.log("📝 Recurso'not-found.html' servido con exito 😊"));
+  res
+    .status(404)
+    .sendFile(resourcePath, (err) =>
+      console.log("📝 Recurso'not-found.html' servido con exito 😊")
+    );
 });
-
 
 // Poniendo el servidor a escuchar
 app.listen(3000, '0.0.0.0', () => {
