@@ -16,11 +16,8 @@ router.get('/about', (req, res, next) => {
 // "GET:  /"
 router.get('/', (_, res) => {
   console.log(products );
-  let resourcePath = path.join(ROOT_DIR, 'server', 'views', 'shop.html');
-  console.log(`📝 Sirviendo recurso: ${resourcePath}`);
-  res.sendFile(resourcePath, (err) =>
-    console.log("📝 Recurso 'shop.html' servido con exito 😊")
-  );
+  console.log("📝 Sirivendo recurso: 'shop.html' 😊")
+  res.render('shop',{layout: false});
 });
 
 export default router;

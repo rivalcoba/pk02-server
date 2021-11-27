@@ -3,13 +3,28 @@ import express from 'express';
 import path from 'path';
 import { ROOT_DIR } from './helpers/path.helper.js';
 
+// Importando el motor de plantillas
+import { engine as ExpressHandlebars } from 'express-handlebars';
+
+// Se crea instancia del motor de plantillas
+const hbsTemplateEngine = ExpressHandlebars({
+  extname: '.hbs',
+  defaultLayout: 'main',
+});
+
 // Importando enrutadores
 import { router as adminRoute } from './routes/admin.route.js';
 import homeRoute from './routes/home.route.js';
-import shopRoute from './routes/shop.route.js';
 
 // Creando una instancia de express
 const app = express();
+
+// Registrando el motor de plantillas
+app.engine('hbs', hbsTemplateEngine);
+// Seleccionado el motor
+app.set('view engine', 'hbs');
+// Estableciendo la ruta de vistas
+app.set('views', path.join(ROOT_DIR, 'server', 'views'));
 
 // Se registra el middleware del BodyParser
 app.use(express.urlencoded({ extended: false }));
@@ -19,8 +34,6 @@ app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // Se agrega ruta admin
 app.use('/admin', adminRoute);
-// Se agrega ruta shop
-app.use('/shop', shopRoute);
 
 // Se agrega ruta home
 app.use(homeRoute);

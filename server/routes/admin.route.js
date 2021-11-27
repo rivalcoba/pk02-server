@@ -14,12 +14,8 @@ export const router = Router();
 // 3 Registramos rutas al enrutador
 // GET "/admin/add-product"
 router.get('/add-product', (req, res, next) => {
-  // Obteniendo la ruta del recurso
-  let resourcePath = path.join(ROOT_DIR, 'server', 'views', 'add-product.html');
-  console.log(`📝 Sirviendo recurso: ${resourcePath}`);
-  res.sendFile(resourcePath, (err) =>
-    console.log("📝 Recurso 'add-product.html' servido con exito 😊")
-  );
+  // Entregando vista
+  res.render('add-product',{layout:false});
 });
 
 // POST "/admin/add-product"
