@@ -4,8 +4,8 @@
   "description": "Server with node",
   "main": "index.js",
   "scripts": {
-    "start": "node main.js",
-    "dev": "nodemon server/main.js"
+    "start": "cross-env node main.js",
+    "dev": "cross-env nodemon server/main.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "license": "MIT",
   "type": "module",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^2.0.13"
   },
   "dependencies": {
