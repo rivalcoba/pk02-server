@@ -3,20 +3,7 @@
 {{> _head-section}}
 <body>
   <header class="main-header">
-    <nav class="main-header__nav">
-      <ul class="main-header__item-list">
-        <li class="main-header__item">
-          <a class="{{shop}}" href="/">
-            Tienda
-          </a>
-        </li>
-        <li class="main-header__item">
-          <a class="{{addProduct}}" href="/admin/add-product">
-            Agregar Producto
-          </a>
-        </li>
-      </ul>
-    </nav>
+    {{> _nav-bar}}
   </header>
   <main>
     {{{body}}}
