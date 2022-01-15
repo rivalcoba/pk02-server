@@ -15,7 +15,10 @@ export const router = Router();
 // GET "/admin/add-product"
 router.get('/add-product', (req, res, next) => {
   // Entregando vista
-  res.render('add-product', { addProduct: 'active' });
+  res.render('add-product', {
+    addProduct: 'active',
+    docTitle: 'Agregar Producto',
+  });
 });
 
 // POST "/admin/add-product"
