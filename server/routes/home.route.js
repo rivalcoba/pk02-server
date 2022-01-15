@@ -17,7 +17,7 @@ router.get('/about', (req, res, next) => {
 router.get('/', (_, res) => {
   console.log(products );
   console.log("📝 Sirivendo recurso: 'shop.html' 😊")
-  res.render('shop');
+  res.render('shop', {shop: "active"});
 });
 
 export default router;
